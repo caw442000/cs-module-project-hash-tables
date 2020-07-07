@@ -22,7 +22,7 @@ class HashTable:
 
     def __init__(self, capacity):
         # Your code here
-      self.hash = [None] * capacity
+      self.data = [None] * capacity
       self.capacity = capacity
       self.size = 0  
 
@@ -66,6 +66,14 @@ class HashTable:
         Implement this, and/or FNV-1.
         """
         # Your code here
+        data_bytes = key.encode()
+        hash = 5381
+
+        for byte in data_bytes:
+          hash +=byte
+          hash &= 0xffffffff
+
+        return hash
 
 
     def hash_index(self, key):
@@ -85,6 +93,9 @@ class HashTable:
         Implement this.
         """
         # Your code here
+        index = self.hash_index(key)
+
+        self.data[index] = value
 
 
     def delete(self, key):
@@ -96,6 +107,9 @@ class HashTable:
         Implement this.
         """
         # Your code here
+        index = self.hash_index(key)
+
+        self.data[index] = None
 
 
     def get(self, key):
@@ -107,6 +121,9 @@ class HashTable:
         Implement this.
         """
         # Your code here
+        index = self.hash_index(key)
+
+        return self.data[index]
 
 
     def resize(self, new_capacity):
