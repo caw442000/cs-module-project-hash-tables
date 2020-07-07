@@ -22,6 +22,9 @@ class HashTable:
 
     def __init__(self, capacity):
         # Your code here
+      self.hash = [None] * capacity
+      self.capacity = capacity
+      self.size = 0  
 
 
     def get_num_slots(self):
