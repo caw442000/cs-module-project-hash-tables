@@ -55,7 +55,6 @@ def decoded(s):
             decoded_string += unscrambled_character
     return decoded_string
 
-)
 print(decoded(cipher))
 
 
